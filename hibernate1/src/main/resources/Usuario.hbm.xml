@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!--
 DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 
@@ -39,38 +39,12 @@ made subject to such option by the copyright holder.
 
 Contributor(s):
 -->
-<hibernate-configuration>
-  <session-factory>
-    <property name="connection.driver_class">
-            org.apache.derby.jdbc.ClientDriver
-        </property>
-    <property name="connection.url">
-            jdbc:derby://localhost:1527/curso;create=true
-        </property>
-    <property name="connection.username">app</property>
-    <property name="connection.password">app</property>
-    <!-- Pool de conexiones JDBC -->
-    <property name="connection.pool_size">1</property>
-    <!-- Dialecto SQL-->
-    <property name="dialect">
-            org.hibernate.dialect.DerbyDialect
-        </property>
-    <!-- Activar la gestión automática de sesiones -->
-    <property name="current_session_context_class">thread</property>
-    <!-- Desactivar el caché de segundo nivel -->
-    <property name="cache.provider_class">
-            org.hibernate.cache.NoCacheProvider
-        </property>
-    <!-- Mostrar con formato las sentencias SQL generadas -->
-    <property name="show_sql">true</property>
-    <property name="format_sql">true</property>
-    <!-- Eliminar y volver a crear la base de datos -->
-    <!--
-                <property name="hbm2ddl.auto">create-drop</property>
-        -->
-    <property name="hbm2ddl.auto">update</property>
-    <!-- Mapas clases-tablas -->
-    <!--<mapping resource="mapas/Usuario.hbm.xml"/>-->
-    <mapping resource="Usuario.hbm.xml"/>
-  </session-factory>
-</hibernate-configuration>
+<hibernate-mapping package="beans">
+  <class name="Usuario">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="nombre"/>
+        <property name="clave"/>
+    </class>
+</hibernate-mapping>
